@@ -5,40 +5,72 @@ const resetButton = document.querySelector("#reset");
 const theTimer = document.querySelector(".timer");
 
 var timer = [0,0,0,0];
-
+var interval
+var timerRunning = false;
 // Add leading zero to numbers 9 or below (purely for aesthetics):
-
+function leadingZero(time){
+	if (time <= 9) {
+		time = "0" + time;
+	}
+	return time;
+}
 
 // Run a standard minute/second/hundredths timer:
 function runTimer(){
-	let currentTime = timer[0] + ":" + timer[1] + ":" + timer[2];
-	theTimer.innerHTML = CurrentTime;
+	let currentTime = leadingZero(timer[0]) + ":" + leadingZero(timer[1]) + ":" + leadingZero(timer[2]);
+	theTimer.innerHTML = currentTime;
 	timer[3]++;
 
 	timer[0] = Math.floor((timer[3]/100)/60);
 	timer[1] = Math.floor((timer[3]/100) - (timer[0]*60));
-	timer[2] = Math.floor((timer[3] - (timer[1]*100)-(timer[0]*6000)); 
+	timer[2] = Math.floor(timer[3] - (timer[1]*100)-(timer[0]*6000)); 
 
 }
 // Match the text entered with the provided text on the page:
 function spellCheck(){
-	let textEntered = textArea.value;
-	if(textEnteredLength === 0 {
-		setInterval(runTimer,10);
-	})
-	console.log(textEntered);
+	let textEntered = testArea.value;
+	let originTextMatch = originText.substring(0,textEntered.length);
+	
+
+	if (textEntered == originText){
+		clearInterval(interval);
+		testWrapper.style.borderColor = "#b5e7a0";
+
+	} else {
+		if (textEntered == originTextMatch){
+		testWrapper.style.borderColor = "#034f84";
+
+		} else {
+		testWrapper.style.borderColor = "#c94c4c";
+
+		}
+
+	}
+	
 
 }
 
 // Start the timer:
 function start(){
 	let textEnteredLength = testArea.value.length;
+	if (textEnteredLength === 0 && !timerRunning) {
+		timerRunning = true;
+		interval = setInterval (runTimer,10);
+	}
 	console.log(textEnteredLength);
 }
 
 // Reset everything:
 function reset(){
-	console.log("Reset has occured")
+	clearInterval(interval);
+	interval = null;
+	timer = [0,0,0,0];
+	timerRunning = false;
+
+
+	testArea.value = "";
+	theTimer.innerHTML = "00:00:00";
+	testWrapper.style.borderColor = "#b2b2b2"
 }
 
 // Event listeners for keyboard input and the reset button:
