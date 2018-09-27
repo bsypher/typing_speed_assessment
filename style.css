@@ -19,6 +19,7 @@ h4,
 h5,
 h6 {
 	clear: both;
+    font-family: Tahoma;
 }
 
 p {
@@ -46,7 +47,7 @@ address {
 }
 
 pre {
-	background: #eee;
+	background: #f4e1d2;
 	font-family: "Courier 10 Pitch", Courier, monospace;
 	font-size: 15px;
 	font-size: 1.5rem;
@@ -111,7 +112,7 @@ body {
 
 .masthead {
     padding: 1em 2em;
-    background-color: #0D1B2E;
+    background-color: #50394c;
     color: white;
 }
 
@@ -121,8 +122,8 @@ body {
 
 .intro {
     padding: 2em 2em;
-    color: #ffffff;
-    background: #429890;
+    color: #101111;
+    background: #fefbd8;
 }
 
 
@@ -179,7 +180,7 @@ body {
     font-weight: bold;
     color: #E95D0F;
     background: white ;
-    border: 10px solid #E95D0F;
+    border: 10px solid #4040a1;
 }
 
 #reset:hover {
